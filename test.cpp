@@ -1,12 +1,27 @@
-#include <stdio.h>
-int main(void) {
-    double score[10], avg = 0;
-    int i;
-    printf("请输入十个学生的成绩:");
-    for(i = 0; i < 10; i++) {
-        scanf("%d", &score[i]);
-        avg += score[i];
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, i = 0;
+    int num[80] = {};
+    cin >> n;
+    while(n) {
+        num[i] = n % 10;
+        n /= 10;
+        i++;
     }
-    printf("平均成绩：%f", avg / 10);
+
+    for(int j = i; j > 0; j--) {
+        int max = -1; 
+        int k = -1; 
+        for(int l = 0; l < i; l++) {
+            if(num[l] > max) {
+                max = num[l];
+                k = l;
+            }
+        }
+        cout << max;
+        num[k] = -1; 
+    }
     return 0;
 }
